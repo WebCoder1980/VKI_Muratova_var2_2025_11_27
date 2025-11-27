@@ -13,12 +13,12 @@ using System.Windows.Shapes;
 namespace SmaginMA_2025_11_27
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for AuthWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class AuthWindow : Window
     {
         private readonly AppDb Db;
-        public MainWindow()
+        public AuthWindow()
         {
             InitializeComponent();
 
