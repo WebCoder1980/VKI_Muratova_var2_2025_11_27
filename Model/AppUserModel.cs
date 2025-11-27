@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SmaginMA_2025_11_27.Model
 {
-    internal class UserModel
+    public class AppUserModel
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -22,6 +22,6 @@ namespace SmaginMA_2025_11_27.Model
 
         public string Password { get; set; }
 
-        public virtual ICollection<OrderModel> Orders { get; set; }
+        public virtual ICollection<AppOrderModel> AppOrders { get; set; }
     }
 }

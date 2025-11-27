@@ -8,20 +8,20 @@ using System.Threading.Tasks;
 
 namespace SmaginMA_2025_11_27.Model
 {
-    internal class OrderProductModel
+    public class OrderProductModel
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long Id { get; set; }
 
-        public long OrderId { get; set; }
+        public long AppOrderId { get; set; }
 
-        public string ProductArticle { get; set; }
+        public string AppProductArticle { get; set; }
 
         public int Quantity { get; set; }
 
-        public virtual OrderModel Order { get; set; }
+        public virtual AppOrderModel AppOrder { get; set; }
 
-        public virtual ProductModel Product { get; set; }
+        public virtual AppProductModel AppProduct { get; set; }
     }
 }

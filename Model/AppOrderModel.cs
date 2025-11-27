@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SmaginMA_2025_11_27.Model
 {
-    internal class OrderModel
+    public class AppOrderModel
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -26,8 +26,8 @@ namespace SmaginMA_2025_11_27.Model
 
         public string Status { get; set; }
 
-        public virtual UserModel Client { get; set; }
+        public virtual AppUserModel Client { get; set; }
 
-        public virtual ICollection<OrderProductModel> OrderItems { get; set; }
+        public virtual ICollection<OrderProductModel> OrderProducts { get; set; }
     }
 }

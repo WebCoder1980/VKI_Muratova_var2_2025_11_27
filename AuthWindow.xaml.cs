@@ -1,4 +1,6 @@
-﻿using SmaginMA_2025_11_27.Db;
+﻿using SmaginMA_2025_11_27.AppWindow;
+using SmaginMA_2025_11_27.Db;
+using SmaginMA_2025_11_27.Model;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -23,6 +25,31 @@ namespace SmaginMA_2025_11_27
             InitializeComponent();
 
             Db = AppDb.GetInstance();
+        }
+
+        private void LoginB_Click(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(LoginTB.Text) || string.IsNullOrWhiteSpace(PasswordPB.Password)) {
+                MessageBox.Show("Не все поля заполнены");
+                return;
+            }
+
+            AppUserModel? user = Db.AppUser.FirstOrDefault(i => i.Login == LoginTB.Text && i.Password == PasswordPB.Password);
+
+            if (user == null)
+            {
+                MessageBox.Show("Неверный логин или пароль");
+                return;
+            }
+
+            var window = new FishingProductsWindow(user);
+            window.ShowDialog();
+        }
+
+        private void LoginGuestB_Click(object sender, RoutedEventArgs e)
+        {
+            var window = new FishingProductsWindow();
+            window.ShowDialog();
         }
     }
 }

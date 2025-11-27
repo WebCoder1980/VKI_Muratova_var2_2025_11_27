@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SmaginMA_2025_11_27.Model
 {
-    internal class ProductModel
+    public class AppProductModel
     {
         [Key]
         public string Article { get; set; }
@@ -34,6 +34,6 @@ namespace SmaginMA_2025_11_27.Model
 
         public string Image { get; set; }
 
-        public virtual ICollection<OrderProductModel> OrderItems { get; set; }
+        public virtual ICollection<OrderProductModel> OrderProducts { get; set; }
     }
 }

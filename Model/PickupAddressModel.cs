@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SmaginMA_2025_11_27.Model
 {
-    internal class PickupAddressModel
+    public class PickupAddressModel
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

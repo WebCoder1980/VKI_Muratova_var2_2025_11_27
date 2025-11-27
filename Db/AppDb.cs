@@ -27,11 +27,11 @@ namespace SmaginMA_2025_11_27.Db
             return instance;
         }
 
-        public virtual DbSet<PickupAddressModel> AddressModel { get; set; }
-        public virtual DbSet<UserModel> EmployeeModel { get; set; }
-        public virtual DbSet<OrderProductModel> OrderItemModel { get; set; }
-        public virtual DbSet<OrderModel> OrderModel { get; set; }
-        public virtual DbSet<ProductModel> ProductModel { get; set; }
+        public virtual DbSet<PickupAddressModel> PickupAddress { get; set; }
+        public virtual DbSet<AppUserModel> AppUser { get; set; }
+        public virtual DbSet<OrderProductModel> OrderProduct { get; set; }
+        public virtual DbSet<AppOrderModel> AppOrder { get; set; }
+        public virtual DbSet<AppProductModel> AppProduct { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
