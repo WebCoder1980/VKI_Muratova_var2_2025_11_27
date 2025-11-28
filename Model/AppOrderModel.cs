@@ -18,13 +18,15 @@ namespace SmaginMA_2025_11_27.Model
 
         public DateTime DeliveryDate { get; set; }
 
-        public int PickupPoint { get; set; }
+        public long PickupPointId { get; set; }
 
         public long ClientId { get; set; }
 
         public string Code { get; set; }
 
         public string Status { get; set; }
+
+        public virtual PickupAddressModel PickupPoint { get; set; }
 
         public virtual AppUserModel Client { get; set; }
 
