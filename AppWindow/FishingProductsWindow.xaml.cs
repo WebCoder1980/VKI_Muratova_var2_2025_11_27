@@ -44,7 +44,7 @@ namespace SmaginMA_2025_11_27.AppWindow
 
         private void HideByRole()
         {
-            List<string> roles = ["Клиент", "Менеджер", "Администратор"];
+            List<string> roles = ["Гость", "Клиент", "Менеджер", "Администратор"];
 
             string currentRole = CurrentUser?.AppRole.Name ?? roles[0];
 
@@ -61,11 +61,11 @@ namespace SmaginMA_2025_11_27.AppWindow
                         = SortOrderCB.Visibility
                         = Visibility.Hidden;
                         break;
-                    case "Пользователь":
+                    case "Клиент":
                         OrdersB.Visibility = Visibility.Hidden;
                         break;
                     case "Менеджер":
-
+                        CreateB.Visibility = Visibility.Visible;
                         break;
                     case "Администратор":
 
@@ -195,6 +195,17 @@ namespace SmaginMA_2025_11_27.AppWindow
         {
             var window = new AppOrdersWindow();
             window.ShowDialog();
+        }
+
+        private void CreateB_Click(object sender, RoutedEventArgs e)
+        {
+            var window = new CreateAppWindow();
+            window.ShowDialog();
+
+            if (window.DialogResult == true)
+            {
+                Refresh();
+            }
         }
     }
 }
