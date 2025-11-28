@@ -83,7 +83,7 @@ namespace SmaginMA_2025_11_27.AppWindow
                     query = query.OrderBy(i => i.Unit);
                     break;
 
-                case "Стоимость":
+                case "Стоимость (без скидки)":
                     query = query.OrderBy(i => i.Cost);
                     break;
 
