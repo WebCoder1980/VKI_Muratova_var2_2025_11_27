@@ -37,6 +37,8 @@ namespace SmaginMA_2025_11_27.AppWindow
 
             CurrentUser = user;
 
+            Title += $" (роль - {user?.AppRole.Name ?? "Гость"})";
+
             Refresh();
 
             HideByRole();

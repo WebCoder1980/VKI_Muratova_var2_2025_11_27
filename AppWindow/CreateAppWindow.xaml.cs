@@ -53,6 +53,8 @@ namespace SmaginMA_2025_11_27.AppWindow
             StockQuantityTB.Text = Item.StockQuantity.ToString();
             DescriptionTB.Text = Item.Description;
             ImagePathTB.Text = Item.Image;
+
+            Title = "Редактирование существующего товара";
         }
 
         private void SaveB_Click(object sender, RoutedEventArgs e)

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SmaginMA_2025_11_27"
         mc:Ignorable="d"
-        Title="AuthWindow" Height="450" Width="800">
+        Title="Окно аунтификации" Height="450" Width="800">
     <Grid>
         <Button x:Name="LoginB" Content="Войти" HorizontalAlignment="Left" Margin="10,56,0,0" VerticalAlignment="Top" Width="91" Click="LoginB_Click"/>
         <TextBox x:Name="LoginTB" HorizontalAlignment="Left" Margin="11,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>

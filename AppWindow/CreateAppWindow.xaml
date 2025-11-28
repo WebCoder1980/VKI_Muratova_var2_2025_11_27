@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SmaginMA_2025_11_27.AppWindow"
         mc:Ignorable="d"
-        Title="CreateAppWindow" Height="450" Width="800">
+        Title="Создать новый товар" Height="450" Width="800">
     <Grid>
         <TextBox x:Name="ArticleTB" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
         <Label Content="Артикул" HorizontalAlignment="Left" Margin="215,6,0,0" VerticalAlignment="Top"/>
