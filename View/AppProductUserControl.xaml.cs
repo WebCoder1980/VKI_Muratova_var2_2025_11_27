@@ -60,7 +60,8 @@ namespace SmaginMA_2025_11_27.View
             CurrentDiscount = model.CurrentDiscount;
             StockQuantity = model.StockQuantity;
             Description = model.Description;
-            Image = model.Image;
+            
+            Image = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Image", model.Image);
 
             Refresh();
         }

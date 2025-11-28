@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SmaginMA_2025_11_27.AppWindow" xmlns:views="clr-namespace:SmaginMA_2025_11_27.View"
         mc:Ignorable="d"
-        Title="FishingProductsWindow" Height="450" Width="800">
+        Title="FishingProductsWindow" Height="650" Width="800">
     <Grid>
         <ListBox x:Name="ItemsLB" Margin="10,86,10,10" MaxHeight="710" ScrollViewer.VerticalScrollBarVisibility="Visible">
             <ListBox.ItemTemplate>

@@ -37,6 +37,6 @@
             Описание:
             <Run Text="{Binding Description}"></Run>
         </TextBlock>
-
+        <Image Height="100" Margin="350,31,150,15" Source="{Binding Image}"/>
     </Grid>
 </UserControl>
