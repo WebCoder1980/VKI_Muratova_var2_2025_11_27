@@ -83,11 +83,23 @@ namespace SmaginMA_2025_11_27.AppWindow
                 return;
             }
 
+            if (cost < 0)
+            {
+                MessageBox.Show("Цена не может быть отрицательной!");
+                return;
+            }
+
             int maxDiscount;
 
             if (!int.TryParse(MaxDiscountTB.Text, out maxDiscount))
             {
                 MessageBox.Show("Максимальная скидка должна быть в целого числа");
+                return;
+            }
+
+            if (maxDiscount < 0 || maxDiscount > 100)
+            {
+                MessageBox.Show("Максимальная скидка не может быть вне диапазона [0, 100]!");
                 return;
             }
 
@@ -99,11 +111,29 @@ namespace SmaginMA_2025_11_27.AppWindow
                 return;
             }
 
+            if (currentDiscount < 0 || currentDiscount > 100)
+            {
+                MessageBox.Show("Текущая скидка не может быть вне диапазона [0, 100]!");
+                return;
+            }
+
+            if (currentDiscount > maxDiscount)
+            {
+                MessageBox.Show("Текущая скидка не может быть больше максимальной скидки!");
+                return;
+            }
+
             int stockQuantity;
 
             if (!int.TryParse(StockQuantityTB.Text, out stockQuantity))
             {
                 MessageBox.Show("Количество должно быть в виде целого числа!");
+                return;
+            }
+
+            if (stockQuantity < 0)
+            {
+                MessageBox.Show("Количество не может быть отрицательно!");
                 return;
             }
 
