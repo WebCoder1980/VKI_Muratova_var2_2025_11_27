@@ -1,8 +1,10 @@
 ﻿using SmaginMA_2025_11_27.Db;
 using SmaginMA_2025_11_27.Model;
+using SmaginMA_2025_11_27.View;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Printing;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -31,6 +33,15 @@ namespace SmaginMA_2025_11_27.AppWindow
             Db = AppDb.GetInstance();
 
             CurrentUser = user;
+
+            Refresh();
+        }
+
+        private void Refresh()
+        {
+            ItemsLB.ItemsSource = Db.AppProduct
+                .Select(i => new AppProductUserControl(i))
+                .ToList();
         }
     }
 }
