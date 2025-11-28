@@ -40,8 +40,6 @@ namespace SmaginMA_2025_11_27.AppWindow
             Title += $" (роль - {user?.AppRole.Name ?? "Гость"})";
 
             Refresh();
-
-            HideByRole();
         }
 
         private void HideByRole()
@@ -187,6 +185,8 @@ namespace SmaginMA_2025_11_27.AppWindow
             }
 
             FilterProducerCB.ItemsSource = filterProducers;
+
+            HideByRole();
         }
 
         private void Refresh(object sender, TextChangedEventArgs e)
