@@ -8,21 +8,14 @@ using System.Threading.Tasks;
 
 namespace SmaginMA_2025_11_27.Model
 {
-    public class AppUserModel
+    public class OrderStatusModel
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long Id { get; set; }
 
-        public long AppRoleId { get; set; }
+        public string Name { get; set; }
 
-        public string FullName { get; set; }
-
-        public string Login { get; set; }
-
-        public string Password { get; set; }
-
-        public virtual AppRoleModel AppRole { get; set; }
         public virtual ICollection<AppOrderModel> AppOrders { get; set; }
     }
 }

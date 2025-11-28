@@ -20,11 +20,11 @@ namespace SmaginMA_2025_11_27.Model
 
         public int MaxDiscount { get; set; }
 
-        public string Manufacturer { get; set; }
+        public long ManufacturerId { get; set; }
 
-        public string Supplier { get; set; }
+        public long SupplierId { get; set; }
 
-        public string Category { get; set; }
+        public long CategoryId { get; set; }
 
         public int CurrentDiscount { get; set; }
 
@@ -33,6 +33,11 @@ namespace SmaginMA_2025_11_27.Model
         public string Description { get; set; }
 
         public string Image { get; set; }
+        public virtual ManufacturerModel Manufacturer { get; set; }
+
+        public virtual SupplierModel Supplier { get; set; }
+
+        public virtual CategoryModel Category { get; set; }
 
         public virtual ICollection<OrderProductModel> OrderProducts { get; set; }
     }

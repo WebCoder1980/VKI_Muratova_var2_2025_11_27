@@ -1,4 +1,5 @@
-﻿using SmaginMA_2025_11_27.Db;
+﻿using Microsoft.EntityFrameworkCore;
+using SmaginMA_2025_11_27.Db;
 using SmaginMA_2025_11_27.Model;
 using SmaginMA_2025_11_27.View;
 using System;
@@ -40,6 +41,9 @@ namespace SmaginMA_2025_11_27.AppWindow
         private void Refresh()
         {
             ItemsLB.ItemsSource = Db.AppProduct
+                .Include(i => i.Manufacturer)
+                .Include(i => i.Supplier)
+                .Include(i => i.Category)
                 .Select(i => new AppProductUserControl(i))
                 .ToList();
         }

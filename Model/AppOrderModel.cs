@@ -24,11 +24,13 @@ namespace SmaginMA_2025_11_27.Model
 
         public string Code { get; set; }
 
-        public string Status { get; set; }
+        public long OrderStatusId { get; set; }
 
         public virtual PickupAddressModel PickupPoint { get; set; }
 
         public virtual AppUserModel Client { get; set; }
+
+        public virtual OrderStatusModel OrderStatus { get; set; }
 
         public virtual ICollection<OrderProductModel> OrderProducts { get; set; }
     }

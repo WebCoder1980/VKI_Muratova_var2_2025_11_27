@@ -27,6 +27,12 @@ namespace SmaginMA_2025_11_27.Db
             return instance;
         }
 
+        public virtual DbSet<AppRoleModel> AppRole { get; set; }
+        public virtual DbSet<OrderStatusModel> OrderStatus { get; set; }
+        public virtual DbSet<ManufacturerModel> Manufacturer { get; set; }
+        public virtual DbSet<SupplierModel> Supplier { get; set; }
+        public virtual DbSet<CategoryModel> Category { get; set; }
+
         public virtual DbSet<PickupAddressModel> PickupAddress { get; set; }
         public virtual DbSet<AppUserModel> AppUser { get; set; }
         public virtual DbSet<OrderProductModel> OrderProduct { get; set; }

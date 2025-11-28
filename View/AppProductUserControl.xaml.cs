@@ -54,9 +54,9 @@ namespace SmaginMA_2025_11_27.View
             Unit = model.Unit;
             Cost = model.Cost;
             MaxDiscount = model.MaxDiscount;
-            Manufacturer = model.Manufacturer;
-            Supplier = model.Supplier;
-            Category = model.Category;
+            Manufacturer = model.Manufacturer.Name;
+            Supplier = model.Supplier.Name;
+            Category = model.Category.Name;
             CurrentDiscount = model.CurrentDiscount;
             StockQuantity = model.StockQuantity;
             Description = model.Description;
