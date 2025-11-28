@@ -11,9 +11,10 @@
             <Run Text="{Binding CurrentDiscount}" />
             %
         </TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="450,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top">
+        <TextBlock HorizontalAlignment="Left" Margin="350,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top">
             Цена:
-            <Run Text="{Binding Cost}"></Run>
+            <Run x:Name="OldCostR" Text="{Binding Cost}"></Run>
+            <Run x:Name="NewCostR"></Run>
             рублей
         </TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="10,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top">

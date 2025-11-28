@@ -68,7 +68,22 @@ namespace SmaginMA_2025_11_27.View
 
         public void Refresh()
         {
-            
+            if (StockQuantity == 0)
+            {
+                GridUC.Background = GetBrush("#fc7c84");
+            }
+            else if (CurrentDiscount > 0)
+            {
+                DiscountTB.Foreground = new SolidColorBrush(Colors.DarkGreen);
+                GridUC.Background = GetBrush("#73f6ff");
+
+                OldCostR.Foreground = new SolidColorBrush(Color.FromRgb(255, 0, 0));
+                OldCostR.TextDecorations = TextDecorations.Strikethrough;
+
+                NewCostR.Text = ((100 - CurrentDiscount) * Cost / 100).ToString();
+            }
         }
+
+        private SolidColorBrush GetBrush(string rgb) => new SolidColorBrush((Color)ColorConverter.ConvertFromString(rgb));
     }
 }
