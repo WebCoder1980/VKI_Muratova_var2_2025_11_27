@@ -4,6 +4,7 @@ using SmaginMA_2025_11_27.Model;
 using SmaginMA_2025_11_27.View;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Printing;
 using System.Text;
@@ -49,6 +50,15 @@ namespace SmaginMA_2025_11_27.AppWindow
                 .Include(i => i.Manufacturer)
                 .Include(i => i.Supplier)
                 .Include(i => i.Category);
+
+            if (!FilterProducerCB.Items.IsEmpty)
+            {
+                string filter = (string)FilterProducerCB.SelectedItem;
+                if (filter != "Все производители")
+                {
+                    query = query.Where(i => i.Manufacturer.Name == filter);
+                }
+            }
 
             string search = SearchTB.Text.ToLower();
 
@@ -127,6 +137,13 @@ namespace SmaginMA_2025_11_27.AppWindow
 
             ItemsLB.ItemsSource = query.Select(i => new AppProductUserControl(i))
                 .ToList();
+
+            ObservableCollection<string> filterProducers = ["Все производители"];
+            foreach (string i in Db.Manufacturer.Select(i => i.Name)) {
+                filterProducers.Add(i);
+            }
+
+            FilterProducerCB.ItemsSource = filterProducers;
         }
 
         private void Refresh(object sender, TextChangedEventArgs e)

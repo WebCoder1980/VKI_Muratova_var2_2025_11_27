@@ -14,9 +14,7 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <ComboBox x:Name="FilterProducerCB" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="250" SelectedIndex="0" SelectionChanged="Refresh">
-            <ComboBoxItem Content="Все производители"/>
-        </ComboBox>
+        <ComboBox x:Name="FilterProducerCB" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="250" SelectedIndex="0" SelectionChanged="Refresh" />
         <ComboBox x:Name="SortPropertyCB" HorizontalAlignment="Left" Margin="365,10,0,0" VerticalAlignment="Top" Width="171" SelectedIndex="0" SelectionChanged="Refresh">
             <ComboBoxItem Content="Артикул"/>
             <ComboBoxItem Content="Название"/>
