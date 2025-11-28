@@ -67,7 +67,7 @@ namespace SmaginMA_2025_11_27.AppWindow
                         OrdersB.Visibility = Visibility.Hidden;
                         break;
                     case "Менеджер":
-                        CreateB.Visibility = Visibility.Visible;
+                        CreateB.Visibility = Visibility.Hidden;
                         foreach (AppProductUserControl j in ItemsLB.Items)
                         {
                             j.HideForRole(roles[i]);
