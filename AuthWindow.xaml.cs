@@ -1,4 +1,5 @@
-﻿using SmaginMA_2025_11_27.AppWindow;
+﻿using Microsoft.EntityFrameworkCore;
+using SmaginMA_2025_11_27.AppWindow;
 using SmaginMA_2025_11_27.Db;
 using SmaginMA_2025_11_27.Model;
 using System.Text;
@@ -34,7 +35,9 @@ namespace SmaginMA_2025_11_27
                 return;
             }
 
-            AppUserModel? user = Db.AppUser.FirstOrDefault(i => i.Login == LoginTB.Text && i.Password == PasswordPB.Password);
+            AppUserModel? user = Db.AppUser
+                .Include(i => i.AppRole)
+                .FirstOrDefault(i => i.Login == LoginTB.Text && i.Password == PasswordPB.Password);
 
             if (user == null)
             {

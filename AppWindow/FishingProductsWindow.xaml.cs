@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Net;
 using System.Printing;
 using System.Text;
 using System.Threading.Tasks;
@@ -43,15 +44,33 @@ namespace SmaginMA_2025_11_27.AppWindow
 
         private void HideByRole()
         {
-            if (CurrentUser == null)
+            List<string> roles = ["Клиент", "Менеджер", "Администратор"];
+
+            string currentRole = CurrentUser?.AppRole.Name ?? roles[0];
+
+            for (int i = roles.IndexOf(currentRole); i < roles.Count; i++)
             {
-                SortL.Visibility
-                    = FilterL.Visibility
-                    = SearchTB.Visibility
-                    = FilterProducerCB.Visibility
-                    = SortPropertyCB.Visibility
-                    = SortOrderCB.Visibility
-                    = Visibility.Hidden; 
+                switch (roles[i])
+                {
+                    case "Гость":
+                        SortL.Visibility
+                        = FilterL.Visibility
+                        = SearchTB.Visibility
+                        = FilterProducerCB.Visibility
+                        = SortPropertyCB.Visibility
+                        = SortOrderCB.Visibility
+                        = Visibility.Hidden;
+                        break;
+                    case "Пользователь":
+                        OrdersB.Visibility = Visibility.Hidden;
+                        break;
+                    case "Менеджер":
+
+                        break;
+                    case "Администратор":
+
+                        break;
+                }
             }
         }
 
@@ -170,6 +189,12 @@ namespace SmaginMA_2025_11_27.AppWindow
         private void Refresh(object sender, SelectionChangedEventArgs e)
         {
             Refresh();
+        }
+
+        private void OrdersB_Click(object sender, RoutedEventArgs e)
+        {
+            var window = new AppOrdersWindow();
+            window.ShowDialog();
         }
     }
 }

@@ -35,5 +35,6 @@
         </ComboBox>
         <Label x:Name="FilterL" Content="Фильтр:" HorizontalAlignment="Left" Margin="10,37,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="SearchTB" HorizontalAlignment="Left" Margin="68,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="468" TextChanged="Refresh"/>
+        <Button x:Name="OrdersB" Content="Посмотреть заказы" HorizontalAlignment="Left" Margin="10,61,0,0" VerticalAlignment="Top" Width="114" Click="OrdersB_Click"/>
     </Grid>
 </Window>
