@@ -37,6 +37,22 @@ namespace SmaginMA_2025_11_27.AppWindow
             CurrentUser = user;
 
             Refresh();
+
+            HideByRole();
+        }
+
+        private void HideByRole()
+        {
+            if (CurrentUser == null)
+            {
+                SortL.Visibility
+                    = FilterL.Visibility
+                    = SearchTB.Visibility
+                    = FilterProducerCB.Visibility
+                    = SortPropertyCB.Visibility
+                    = SortOrderCB.Visibility
+                    = Visibility.Hidden; 
+            }
         }
 
         private void Refresh()

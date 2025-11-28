@@ -28,12 +28,12 @@
             <ComboBoxItem Content="Кол-во на складе"/>
             <ComboBoxItem Content="Описание"/>
         </ComboBox>
-        <Label Content="Сортировка:" HorizontalAlignment="Left" Margin="281,8,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="SortL" Content="Сортировка:" HorizontalAlignment="Left" Margin="281,8,0,0" VerticalAlignment="Top"/>
         <ComboBox x:Name="SortOrderCB" HorizontalAlignment="Left" Margin="541,10,0,0" VerticalAlignment="Top" Width="171" SelectedIndex="0" SelectionChanged="Refresh">
             <ComboBoxItem Content="По возрастанию"/>
             <ComboBoxItem Content="По убыванию"/>
         </ComboBox>
-        <Label Content="Фильтр:" HorizontalAlignment="Left" Margin="10,37,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="FilterL" Content="Фильтр:" HorizontalAlignment="Left" Margin="10,37,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="SearchTB" HorizontalAlignment="Left" Margin="68,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="468" TextChanged="Refresh"/>
     </Grid>
 </Window>
