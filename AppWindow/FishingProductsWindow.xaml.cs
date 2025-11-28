@@ -66,6 +66,10 @@ namespace SmaginMA_2025_11_27.AppWindow
                         break;
                     case "Менеджер":
                         CreateB.Visibility = Visibility.Visible;
+                        foreach (AppProductUserControl j in ItemsLB.Items)
+                        {
+                            j.HideForRole(roles[i]);
+                        }
                         break;
                     case "Администратор":
 
@@ -170,7 +174,9 @@ namespace SmaginMA_2025_11_27.AppWindow
                 query = query.Reverse();
             }
 
-            ItemsLB.ItemsSource = query.Select(i => new AppProductUserControl(i))
+            var currentWindow = this;
+
+            ItemsLB.ItemsSource = query.Select(i => new AppProductUserControl(i, currentWindow))
                 .ToList();
 
             ObservableCollection<string> filterProducers = ["Все производители"];
@@ -188,6 +194,28 @@ namespace SmaginMA_2025_11_27.AppWindow
 
         private void Refresh(object sender, SelectionChangedEventArgs e)
         {
+            Refresh();
+        }
+
+        public void UpdateItem(AppProductUserControl item)
+        {
+            var window = new CreateAppWindow(item);
+            window.ShowDialog();
+
+            if (window.DialogResult == true)
+            {
+                Refresh();
+            }
+        }
+
+        public void DeleteItem(AppProductUserControl item)
+        {
+            Db.AppProduct.Remove(
+                Db.AppProduct.First(i => i.Article == item.Article)
+            );
+
+            Db.SaveChanges();
+
             Refresh();
         }
 

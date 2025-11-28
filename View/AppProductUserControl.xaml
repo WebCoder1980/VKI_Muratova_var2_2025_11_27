@@ -38,6 +38,8 @@
             Описание:
             <Run Text="{Binding Description}"></Run>
         </TextBlock>
-        <Image Height="100" Margin="350,31,150,15" Source="{Binding Image}"/>
+        <Image Height="100" Margin="350,31,150,15" Source="{Binding ImageFullPath}"/>
+        <Button x:Name="UpdateB" Content="Изменить" HorizontalAlignment="Left" Margin="281,95,0,0" VerticalAlignment="Top" Click="UpdateB_Click"/>
+        <Button x:Name="DeleteB" Content="Удалить" HorizontalAlignment="Left" Margin="281,120,0,0" VerticalAlignment="Top" Width="58" Click="DeleteB_Click"/>
     </Grid>
 </UserControl>

@@ -1,5 +1,6 @@
 ﻿using SmaginMA_2025_11_27.Db;
 using SmaginMA_2025_11_27.Model;
+using SmaginMA_2025_11_27.View;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -23,6 +24,8 @@ namespace SmaginMA_2025_11_27.AppWindow
     public partial class CreateAppWindow : Window
     {
         private AppDb Db { get; set; }
+        private AppProductUserControl? Item { get; set; }
+
         public CreateAppWindow()
         {
             InitializeComponent();
@@ -32,6 +35,24 @@ namespace SmaginMA_2025_11_27.AppWindow
             ManufacturerCB.ItemsSource = Db.Manufacturer.Select(i => i.Name).ToList();
             SupplierCB.ItemsSource = Db.Supplier.Select(i => i.Name).ToList();
             CategoryCB.ItemsSource = Db.Category.Select(i => i.Name).ToList();
+        }
+
+        public CreateAppWindow(AppProductUserControl item) : this()
+        {
+            Item = item;
+
+            ArticleTB.Text = Item.Article;
+            NameTB.Text = Item.ProductName;
+            UnitTB.Text = Item.Unit;
+            CostTB.Text = Item.Cost.ToString();
+            MaxDiscountTB.Text = Item.MaxDiscount.ToString();
+            ManufacturerCB.SelectedItem = Item.Manufacturer;
+            SupplierCB.SelectedItem = Item.Supplier;
+            CategoryCB.SelectedItem = Item.Category;
+            CurrentDiscountTB.Text = Item.CurrentDiscount.ToString();
+            StockQuantityTB.Text = Item.StockQuantity.ToString();
+            DescriptionTB.Text = Item.Description;
+            ImagePathTB.Text = Item.Image;
         }
 
         private void SaveB_Click(object sender, RoutedEventArgs e)
@@ -48,7 +69,6 @@ namespace SmaginMA_2025_11_27.AppWindow
                 || string.IsNullOrWhiteSpace(CurrentDiscountTB.Text)
                 || string.IsNullOrWhiteSpace(StockQuantityTB.Text)
                 || string.IsNullOrWhiteSpace(DescriptionTB.Text)
-                || string.IsNullOrWhiteSpace(ImagePathTB.Text)
             ) {
                 MessageBox.Show("Не все поля заполнены");
                 return;
@@ -85,32 +105,42 @@ namespace SmaginMA_2025_11_27.AppWindow
                 return;
             }
 
-
-            string fullPath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Image", ImagePathTB.Text);
-
-            if (!File.Exists(fullPath))
+            if (!string.IsNullOrWhiteSpace(ImagePathTB.Text))
             {
-                MessageBox.Show("Файла со следующим путём не существует!");
-                return;
+                string fullPath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Image", ImagePathTB.Text);
+
+                if (!File.Exists(fullPath))
+                {
+                    MessageBox.Show("Файла со следующим путём не существует!");
+                    return;
+                }
             }
 
-            var model = new AppProductModel()
-            {
-                Article = ArticleTB.Text,
-                Name = NameTB.Text,
-                Unit = UnitTB.Text,
-                Cost = cost,
-                MaxDiscount = maxDiscount,
-                Manufacturer = Db.Manufacturer.First(i => i.Name == ManufacturerCB.Text),
-                Supplier = Db.Supplier.First(i => i.Name == SupplierCB.Text),
-                Category = Db.Category.First(i => i.Name == CategoryCB.Text),
-                CurrentDiscount = currentDiscount,
-                StockQuantity = stockQuantity,
-                Description = DescriptionTB.Text,
-                Image = ImagePathTB.Text
-            };
+            AppProductModel model;
 
-            Db.AppProduct.Add(model);
+            if (Item == null)
+            {
+                model = new AppProductModel();
+                model.Article = ArticleTB.Text;
+                Db.AppProduct.Add(model);
+            }
+            else
+            {
+                model = Db.AppProduct.FirstOrDefault(i => i.Article == Item.Article);
+            }
+
+            model.Article = ArticleTB.Text;
+            model.Name = NameTB.Text;
+            model.Unit = UnitTB.Text;
+            model.Cost = cost;
+            model.MaxDiscount = maxDiscount;
+            model.Manufacturer = Db.Manufacturer.First(i => i.Name == ManufacturerCB.Text);
+            model.Supplier = Db.Supplier.First(i => i.Name == SupplierCB.Text);
+            model.Category = Db.Category.First(i => i.Name == CategoryCB.Text);
+            model.CurrentDiscount = currentDiscount;
+            model.StockQuantity = stockQuantity;
+            model.Description = DescriptionTB.Text;
+            model.Image = ImagePathTB.Text;
 
             Db.SaveChanges();
 

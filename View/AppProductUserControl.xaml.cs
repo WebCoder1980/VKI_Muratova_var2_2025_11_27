@@ -1,4 +1,6 @@
-﻿using SmaginMA_2025_11_27.Model;
+﻿using Microsoft.Data.SqlClient;
+using SmaginMA_2025_11_27.AppWindow;
+using SmaginMA_2025_11_27.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -44,8 +46,11 @@ namespace SmaginMA_2025_11_27.View
         public string Description { get; set; }
 
         public string Image { get; set; }
+        public string ImageFullPath { get; set; }
 
-        public AppProductUserControl(AppProductModel model)
+        private FishingProductsWindow ParentWindow { get; set; }
+
+        public AppProductUserControl(AppProductModel model, FishingProductsWindow parentWindow)
         {
             InitializeComponent();
 
@@ -60,8 +65,11 @@ namespace SmaginMA_2025_11_27.View
             CurrentDiscount = model.CurrentDiscount;
             StockQuantity = model.StockQuantity;
             Description = model.Description;
-            
-            Image = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Image", model.Image);
+
+            Image = model.Image;
+            ImageFullPath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Image", Image);
+
+            ParentWindow = parentWindow;
 
             Refresh();
         }
@@ -80,10 +88,35 @@ namespace SmaginMA_2025_11_27.View
                 OldCostR.Foreground = new SolidColorBrush(Color.FromRgb(255, 0, 0));
                 OldCostR.TextDecorations = TextDecorations.Strikethrough;
 
-                NewCostR.Text = ((100 - CurrentDiscount) * Cost / 100).ToString();
+                NewCostR.Text = decimal.Round((100 - CurrentDiscount) * Cost / 100, 2).ToString();
             }
         }
 
         private SolidColorBrush GetBrush(string rgb) => new SolidColorBrush((Color)ColorConverter.ConvertFromString(rgb));
+
+        private void UpdateB_Click(object sender, RoutedEventArgs e)
+        {
+            ParentWindow.UpdateItem(this);
+        }
+
+        private void DeleteB_Click(object sender, RoutedEventArgs e)
+        {
+            ParentWindow.DeleteItem(this);
+        }
+
+        public void HideForRole(string role)
+        {
+            switch (role)
+            {
+                case "Гость":
+                case "Клиент":
+                case "Менеджер":
+                    UpdateB.Visibility = DeleteB.Visibility = Visibility.Hidden;
+                    break;
+                case "Администратор":
+
+                    break;
+            }
+        }
     }
 }
