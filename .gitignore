@@ -194,3 +194,7 @@ obj
 # Visual Studio
 
 .vs/
+
+# Rider
+
+.idea/
